@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<title>Registration Form</title>
+	<style type="text/css">
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		#reg{
+			background-color:lightgreen;
+			color:white;
+			height:75px;
+			padding-top:15px;
+			text-align: center;
+            
+		}
+      .h{
+     	font-size:25px; 
+        }
+        .container-fluid{
+        	background:url(slider-hats-1920x700.jpg) no-repeat;
+        	background:cover;
+
+        	height:645px;
+        }
+        .input{
+        	color:white;
+        	margin-top:50px;
+
+        	margin-left:-100px;
+        	border-radius: 10px;
+        	border-bottom:1px solid black;
+        	border-top:none;
+        	background-color:transparent;
+        	width:200px;
+            outline:none;
+        }
+        .t{
+        	color:white;
+        	margin-left:10px;
+        	border-radius: 10px;
+        	border-bottom:1px solid black;
+        	border-top: none;
+        	background-color:transparent;
+        	width:200px;
+        	outline:none;
+        }
+        label{
+        	margin-left:15px;
+            font-size: 20px;
+        }
+        .btn{
+        	margin-top:50px;
+        	margin-left:40px;
+        }
+        #bottom{
+        	background-color:gray;
+        	height:100px;
+        }
+        #mat{
+             display:none;
+            color:white;
+        }
+	</style>
+  <script type="text/javascript">
+      function passeqal(){
+        var x,y;
+        x=document.getElementById("pass").value;
+        y=document.getElementById("pass1").value;
+        if(x==y){
+            return true;
+        }else{
+          return false;
+          
+        }
+        function check(){
+            if(document.getElementById('pass').value==document.getElementById('pass1').value){
+                document.getElementById('message').style.color='green';
+                document.getElementById('message').style.innerHTML='matching';
+            }else{
+                document.getElementById('message').style.color='red';
+                document.getElementById('message').style.innerHTML='not matching';
+            }
+        }
+
+      }
+      $(document).ready(function(){
+      $('#pass1').keyup(function(){
+        var pwd = $('#pass').val();
+        var cpwd = $('#pass1').val();
+        if(cpwd!=pwd){
+            $('#message').html('**Password are not matching');
+            $('#message').css('color','red');
+            return false;
+        }else{
+            $('#message').html('');
+            return true;
+        }});
+      });
+  </script>
+</head>
+<body>
+ <div id="reg">
+ 	<h2 class="h col-lg-8 offset-lg-2 col-sm-9 offset-sm-2 col-md-10 offset-md-1">Register yourself for this Great work</h2>
+ </div>
+ <div class="container-fluid">
+ 	<div class="container">
+ 		<form  action="connect.php" method="post"  onsubmit="return passeqal()" >
+ 		<table>
+ 		<tr>
+ 		<input name="firstName" class="input text-center col-sm-2 col-xs-1" type="text" placeholder="First" required>
+ 		<input name="MiddleName" class="t text-center col-sm-2 col-xs-1" type="text" placeholder="Middle" required>
+ 		<input  name="lastName" class="t text-center col-sm-2 col-xs-1" type="text" placeholder="Last" required></tr>
+ 		<br>
+ 		<tr>
+ 			<input name="Email" class="input text-center" type="email" placeholder="Email" required>
+ 		</tr><br>
+ 		<tr>
+ 			<input id="pass" name="password" class="input text-center" type="password" placeholder="password" onkeyup="" required></tr><br>
+ 			<tr>
+                <input id="pass1" class="input text-center" type="password" placeholder="Conform Password" onkeyup="ready()" required>
+                <span id='message'></span>
+            </tr> <br>
+ 			<tr>
+ 				<input class="btn btn-success" type="submit" value="Submit">
+ 			</tr>
+ 	</table></form>
+ 	</div>
+ </div>
+ <div id="bottom"></div>
+</body>
+</html>
